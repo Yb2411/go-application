@@ -20,6 +20,11 @@ jobs:
         sudo apt install -y ansible sshpass software-properties-common
         sudo apt-add-repository --yes --update ppa:ansible/ansible
 
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "34.175.234.85 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJZRlwiabMsg0p5gUk54W3uxBHvDjNS6T0upitw7JOQC7fo6GBcbgnvSAXpIbPBg5rHQfKWS+RvluaBY2cGV9IA=" >> ~/.ssh/known_hosts
+        
     - name: Run Ansible playbook
       run: |
         echo "${{ secrets.PRIVATE_KEY }}" > key.pem
