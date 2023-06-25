@@ -1,0 +1,22 @@
+- hosts: 	34.175.234.85
+  become: yes
+  tasks:
+    - name: Install Go
+      apt:
+        name: golang
+        state: latest
+    - name: Ensure git is installed
+      apt:
+        name: git
+        state: present
+        
+    - name: Fetch code from GitHub
+      git:
+        repo: 'https://github.com/Yb2411/go-application'
+        dest: '/home/yassine_bergui95/go/'
+
+    - name: Build application
+      command: go build -o app /home/yassine_bergui95/go/main.go
+
+    - name: Start application
+      command: nohup ./app &
