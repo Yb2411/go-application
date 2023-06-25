@@ -1,6 +1,9 @@
 name: Deploy to GCP
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   deploy:
@@ -13,10 +16,11 @@ jobs:
     - name: Setup Ansible
       run: |
         sudo apt update
-        sudo apt install -y ansible
+        sudo apt install -y ansible sshpass software-properties-common
+        sudo apt-add-repository --yes --update ppa:ansible/ansible
 
     - name: Run Ansible playbook
-      uses: ansible/ansible-runner-action@v1
-      with:
-        playbook: playbook.yml
-        private-key: ${{ secrets.PRIVATE_KEY }}
+      run: |
+        echo "${{ secrets.PRIVATE_KEY }}" > key.pem
+        chmod 600 key.pem
+        ansible-playbook -i ${{ secrets.VM_IP }}, -u ${{ secrets.VM_USERNAME }} --private-key=key.pem playbook.yml
