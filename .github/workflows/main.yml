@@ -1,0 +1,22 @@
+name: Deploy to GCP
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Ansible
+      run: |
+        sudo apt update
+        sudo apt install -y ansible
+
+    - name: Run Ansible playbook
+      uses: ansible/ansible-runner-action@v1
+      with:
+        playbook: playbook.yml
+        private-key: ${{ secrets.PRIVATE_KEY }}
