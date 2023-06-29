@@ -28,4 +28,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.repository }}/go-app:latest  # Change "go-app" to your application name
+        tags: ghcr.io/yb2411/go-app:latest  # Change "go-app" to your application name
