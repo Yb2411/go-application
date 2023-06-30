@@ -8,7 +8,7 @@ import (
 	_ "github.com/lib/pq" // Here is your postgres driver
 )
 
-const (
+var (
 	host     = os.Getenv("DB_HOST")
 	port     = os.Getenv("DB_PORT")
 	user     = os.Getenv("DB_USER")
