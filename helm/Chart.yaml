@@ -1,0 +1,4 @@
+apiVersion: v2
+name: go-app
+description: Helm chart for deploying Go application
+version: 1.0.0
