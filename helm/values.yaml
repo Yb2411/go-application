@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: <your-docker-image>
+  repository: ghcr.io/yb2411/go-app:latest
   pullPolicy: IfNotPresent
   tag: "latest"
 
