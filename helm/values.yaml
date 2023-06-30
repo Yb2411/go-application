@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/yb2411/go-app:latest
+  repository: ghcr.io/yb2411/go-app
   pullPolicy: IfNotPresent
   tag: "latest"
 
